@@ -1,0 +1,52 @@
+.navBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+@media screen and (min-width: 768px) {
+  .navBar {
+    flex-direction: row;
+  }
+}
+.searchBarContainer {
+  border-style: solid;
+  display: flex;
+  align-items: center;
+  border-width: 1px;
+  border-radius: 3px;
+  margin-left: 5px;
+}
+.searchInput {
+  border: none;
+  outline: none;
+}
+.searchButton {
+  border: none;
+  outline: none;
+  padding: 4px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.navigationButton {
+  display: flex;
+  align-items: center;
+  margin-top: 5%;
+}
+
+@media screen and (min-width: 768px) {
+  .navigationButton {
+    margin-top: 0px;
+  }
+}
+
+.navButton {
+  margin-left: 17px;
+  width: max-content;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+}

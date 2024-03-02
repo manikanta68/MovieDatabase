@@ -1,0 +1,26 @@
+.moviePoster {
+  width: 300px;
+  height: 350px;
+  border-radius: 10px;
+}
+.movieTitle {
+  margin: 4px;
+  font-size: 18px;
+  width: 300px;
+}
+.movieRating {
+  margin: 4px;
+  font-size: 14px;
+}
+
+.eachMovieItem {
+  margin-bottom: 10px;
+}
+
+.viewDetailsButton {
+  width: 300px;
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}

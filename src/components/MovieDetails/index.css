@@ -1,0 +1,99 @@
+.MoviesDetailsContainer {
+  width: 100%;
+}
+.content {
+  height: 100vh;
+
+  overflow-y: scroll;
+}
+.eachMovieDetailsImage {
+  height: 350px;
+  width: 250px;
+  border-radius: 10px;
+}
+.eachMovieDetails {
+  margin-top: 6%;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  justify-items: center;
+  text-align: start;
+}
+@media screen and (min-width: 768px) {
+  .eachMovieDetails {
+    grid-template-columns: 300px 300px;
+  }
+}
+.movieTitle {
+  margin: 0px;
+  margin-top: 6px;
+  font-size: 17px;
+}
+.para {
+  margin: 4px;
+}
+
+.overView {
+  margin-top: 10px;
+}
+
+.span {
+  color: grey;
+}
+.castDetails {
+  width: 250px;
+  margin-top: 6%;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: start;
+  list-style-type: none;
+}
+
+@media screen and (min-width: 786px) {
+  .castDetails {
+    width: 100%;
+    grid-template-columns: repeat(6, 200px);
+    justify-items: center;
+    gap: 2rem;
+  }
+}
+
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  align-self: center;
+  width: 250px;
+}
+
+@media screen and (min-width: 768px) {
+  .detailsContainer {
+    align-self: flex-start;
+    width: 320px;
+  }
+}
+
+.castImage {
+  height: 110px;
+  width: 100px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+.castChar {
+  margin: 3px;
+  text-align: start;
+}
+.castName {
+  margin: 3px;
+  text-align: left;
+}
+.castDetailsContainer {
+  width: 100%;
+}

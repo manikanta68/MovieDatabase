@@ -1,0 +1,34 @@
+.popularMoviesContainer {
+  width: 100%;
+}
+
+.moviesListUl {
+  padding-top: 30px;
+  padding-left: 0px;
+  list-style-type: none;
+  padding: none;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  justify-items: center;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+@media screen and (min-width: 576px) {
+  .moviesListUl {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .moviesListUl {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
