@@ -25,7 +25,7 @@ class Header extends Component {
           <input
             value={input}
             onChange={this.changInput}
-            type="search"
+            type="text"
             className="searchInput"
           />
           <button
