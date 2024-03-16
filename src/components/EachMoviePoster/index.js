@@ -10,9 +10,9 @@ const EachMovie = props => {
         <img
           className="moviePoster"
           src={`https://image.tmdb.org/t/p/w500${eachObj.posterPath}`}
-          alt="some"
+          alt={eachObj.title}
         />
-        <h1 className="movieTitle">{eachObj.title}</h1>
+        <h1 className="movieTitleName">{eachObj.title}</h1>
         <p className="movieRating">
           Rating {} {eachObj.voteAverage.toFixed(1)}
         </p>
