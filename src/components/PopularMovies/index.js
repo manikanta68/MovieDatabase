@@ -5,17 +5,21 @@ import EachMovie from '../EachMoviePoster'
 import './index.css'
 
 class PopularMovies extends Component {
-  state = {PopularMoviesList: [], inputValue: ''}
+  state = {
+    PopularMoviesList: [],
+    inputValue: '',
+    pageNumber: 1,
+  }
 
   componentDidMount() {
     this.getData()
   }
 
   getData = async () => {
-    const {inputValue} = this.state
-    const url = `https://api.themoviedb.org/3/movie/popular?api_key=${'02e21fa6c9e1fbf8591dcc5c93266bc8'}&language=en-US&page=1`
+    const {inputValue, pageNumber} = this.state
+    const url = `https://api.themoviedb.org/3/movie/popular?api_key=${'02e21fa6c9e1fbf8591dcc5c93266bc8'}&language=en-US&page=${pageNumber}`
 
-    const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${'02e21fa6c9e1fbf8591dcc5c93266bc8'}&language=en-US&query=${inputValue}&page=1
+    const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${'02e21fa6c9e1fbf8591dcc5c93266bc8'}&language=en-US&query=${inputValue}&page=${pageNumber}
 `
 
     const finalUrl = inputValue === '' ? url : searchUrl
@@ -43,18 +47,49 @@ class PopularMovies extends Component {
       }))
       this.setState({PopularMoviesList: updateData})
     }
+    // const pageNumbers = responseData.total_pages
+    // console.log(pageNumbers)
+    // const sequence = [...Array(pageNumbers).keys()]
+    // this.setState({numbersList: sequence.slice(1, 100)})
   }
 
   onChangeInput = value => {
     this.setState({inputValue: value}, this.getData)
   }
 
-  render() {
-    const {PopularMoviesList} = this.state
+  onPrevPage = () => {
+    const {pageNumber} = this.state
+    if (pageNumber > 1) {
+      this.setState(
+        prevState => ({pageNumber: prevState.pageNumber - 1}),
+        this.getData,
+      )
+    }
+  }
 
+  onNxtPage = () => {
+    this.setState(
+      prevState => ({pageNumber: prevState.pageNumber + 1}),
+      this.getData,
+    )
+  }
+
+  render() {
+    const {PopularMoviesList, pageNumber} = this.state
+    console.log(pageNumber)
     return (
       <div className="popularMoviesContainer">
         <Header onChangeInput={this.onChangeInput} />
+
+        <div className="pageNavigation">
+          <button onClick={this.onPrevPage} type="button">
+            Prev
+          </button>
+          <p className="pageNumber">{pageNumber}</p>
+          <button onClick={this.onNxtPage} type="button">
+            Next
+          </button>
+        </div>
         {PopularMoviesList.length > 0 && (
           <ul className="moviesListUl">
             {PopularMoviesList.map(eachObj => (

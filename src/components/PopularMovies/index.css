@@ -32,3 +32,26 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+.numUlList {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  overflow-x: scroll;
+}
+.num {
+  margin: 10px;
+}
+
+.pageNavigation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 30px;
+}
+
+.pageNumber {
+  margin-left: 10px;
+  margin-right: 10px;
+}

@@ -5,17 +5,17 @@ import EachMovie from '../EachMoviePoster'
 import './index.css'
 
 class TopRatedMovies extends Component {
-  state = {TopRatedMoviesList: [], inputValue: ''}
+  state = {TopRatedMoviesList: [], inputValue: '', pageNumber: 1}
 
   componentDidMount() {
     this.getData()
   }
 
   getData = async () => {
-    const {inputValue} = this.state
+    const {inputValue, pageNumber} = this.state
     console.log(inputValue)
-    const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${'02e21fa6c9e1fbf8591dcc5c93266bc8'}&language=en-US&page=1`
-    const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${'02e21fa6c9e1fbf8591dcc5c93266bc8'}&language=en-US&query=${inputValue}&page=1
+    const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${'02e21fa6c9e1fbf8591dcc5c93266bc8'}&language=en-US&page=${pageNumber}`
+    const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${'02e21fa6c9e1fbf8591dcc5c93266bc8'}&language=en-US&query=${inputValue}&page=${pageNumber}
 `
 
     const finalUrl = inputValue === '' ? url : searchUrl
@@ -48,12 +48,38 @@ class TopRatedMovies extends Component {
     this.setState({inputValue: value}, this.getData)
   }
 
+  onPrevPage = () => {
+    const {pageNumber} = this.state
+    if (pageNumber > 1) {
+      this.setState(
+        prevState => ({pageNumber: prevState.pageNumber - 1}),
+        this.getData,
+      )
+    }
+  }
+
+  onNxtPage = () => {
+    this.setState(
+      prevState => ({pageNumber: prevState.pageNumber + 1}),
+      this.getData,
+    )
+  }
+
   render() {
-    const {TopRatedMoviesList} = this.state
+    const {TopRatedMoviesList, pageNumber} = this.state
 
     return (
       <div className="topRatedMoviesContainer">
         <Header onChangeInput={this.onChangeInput} />
+        <div className="pageNavigation">
+          <button onClick={this.onPrevPage} type="button">
+            Prev
+          </button>
+          <p className="pageNumber">{pageNumber}</p>
+          <button onClick={this.onNxtPage} type="button">
+            Next
+          </button>
+        </div>
         {TopRatedMoviesList.length > 0 && (
           <ul className="moviesListUl">
             {TopRatedMoviesList.map(eachObj => (
